@@ -52,9 +52,14 @@ function displayUserOnScreen(userDetails) {
   userList.appendChild(userItem);
 
   deleteBtn.addEventListener("click", function (event) {
-    userList.removeChild(event.target.parentElement);
-    localStorage.removeItem(userDetails.email);
-  });
+    axios
+      .delete(
+        `https://crudcrud.com/api/8cfd804b93dc4e0f81ef474808f7a79f/appointmentData/${userDetails._id}`)
+        .then(() => {
+            userList.removeChild(event.target.parentElement);
+        })
+        .catch((error) => console.log(error));
+    });
 
   editBtn.addEventListener("click", function (event) {
     userList.removeChild(event.target.parentElement);
