@@ -1,3 +1,16 @@
+window.addEventListener("DOMContentLoaded", () => {
+  axios
+    .get(
+      "https://crudcrud.com/api/8cfd804b93dc4e0f81ef474808f7a79f/appointmentData"
+    )
+    .then((response) => {
+        console.log(response);
+        for(let i=0; i<response.data.length; i++){
+            displayUserOnScreen(response.data[i]);
+        }
+    })
+    .catch((error) => console.log(error));
+});
 function handleFormSubmit(event) {
   event.preventDefault();
   const userDetails = {
